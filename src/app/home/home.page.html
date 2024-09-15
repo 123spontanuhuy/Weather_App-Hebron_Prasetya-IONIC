@@ -1,20 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<head>
+  <!-- Add Google Font for Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Weather App</ion-title>
+      <ion-label>By: Hebron Prasetya</ion-label>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="search-bar">
+    <ion-searchbar class="input-custom" placeholder="Enter city" [debounce]="500" (click)="showSuggestions = true" (ionInput)="filterCities($event)"></ion-searchbar>  
   </div>
+
+  <ng-container *ngIf="showSuggestions">
+    <ion-list>
+      <ion-item button *ngFor="let city of filteredCities | slice:0:5">
+        <ion-label (click)="selectCity(city)">{{ city }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <div class="weather-main" *ngIf="currentWeather.main">
+    <div style="text-align: center;">
+      <h1>{{ currentCity }}</h1>
+    </div>
+    <div class="description">
+      <div style="display: flex; flex-direction: row;">
+        <h4>{{ currentWeather.description }}</h4>
+        <img [src]="currentWeather.iconUrl" width="50">
+      </div>
+      <h4>{{ currentWeather.main.temp }}° C</h4>
+    </div>
+    <div class="weather-detail">
+      <div>
+        <h5>Humidity:</h5>
+        <h5>Pressure:</h5>
+        <h5>Wind:</h5>
+      </div>
+      <div>
+        <h5>{{ currentWeather.main.humidity }}%</h5>
+        <h5>{{ currentWeather.main.pressure }}hPa</h5>
+        <h5>{{ currentWeather.wind.speed }} m/s</h5>
+      </div>
+    </div>
+
+
+  
+  </div>
+
 </ion-content>
