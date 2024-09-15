@@ -5,4 +5,4 @@
 <p align="center">Ini merupakan Aplikasi Sederhana Metric Converter yang dapat digunakan untuk mengetahui keadaan cuaca pada suatu daerah berdasarkan pencarian nama kota</p>
 
 ### Download
-Link Google Drive: https://drive.google.com/file/d/1s-7CtP7ldPv5aC51281xCZGYEGX1XBLw/view?usp=drive_link
+Link Google Drive: https://drive.google.com/file/d/1Z05MzxMdskZIJhHcD0yrvFE-F5wrT8ze/view?usp=drive_link
